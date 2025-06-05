@@ -219,7 +219,7 @@ function bubbleSort(array) {
 let count = 0;
 let result = [];
 
-while (count < 50) {
+while (count < 100) {
   result.push(Math.floor(Math.random() * 100));
   count++;
 }
