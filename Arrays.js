@@ -233,29 +233,3 @@ console.log(quickSort(result));
 console.log(countingSort(result));
 console.log(radixSort(result));
 console.log(heapSort(result));
-
-////////////////////////////////////////////////////////////////////////////////////
-// BINARY SEARCH -- LIST MUST BE SORTED
-function binarySearch(target, array) {
-  let min = 0;
-  let max = array.length - 1;
-  let mid;
-  let element;
-
-  while (min <= max) {
-    mid = Math.floor((min + max) / 2);
-    element = array[mid];
-
-    if (element < target) {
-      min = mid + 1;
-    } else if (element > target) {
-      max = mid - 1;
-    } else {
-      return element;
-    }
-  }
-
-  return null;
-}
-
-console.log(binarySearch(23, result));
