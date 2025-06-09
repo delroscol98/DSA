@@ -10,6 +10,8 @@ class Node {
     const newNode = new Node(value);
     // Decide to go left or right starting from the root
     if (value < this.value) {
+      // go left
+
       if (this.left) {
         this.left.add(value);
       } else {
@@ -21,6 +23,8 @@ class Node {
         this.height = this.left.height + 1;
       }
     } else {
+      // go right
+
       if (this.right) {
         this.right.add(value);
       } else {
@@ -40,7 +44,7 @@ class Node {
     const leftHeight = this.left ? this.left.height : 0;
 
     // Is the node out of balance (left-heavy)?
-    if (Math.abs(leftHeight - rightHeight) >= 2) {
+    if (leftHeight > rightHeight + 1) {
       const leftRightHeight = this.left.right ? this.left.right.height : 0;
       const leftLeftHeight = this.left.left ? this.left.left.height : 0;
 
@@ -102,7 +106,7 @@ class Node {
       this.height = 1;
     } else if (
       !this.right ||
-      (!this.left && this.right.height < this.left.height)
+      (this.left && this.right.height < this.left.height)
     ) {
       this.height = this.left.height + 1;
     } else {
