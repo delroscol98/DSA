@@ -57,7 +57,7 @@ class Node {
       this.rotateRight();
     }
     // Is the node out of balance (right heavy)?
-    else if (Math.abs(rightHeight - leftHeight) >= 2) {
+    else if (rightHeight > leftHeight + 1) {
       const rightLeftHeight = this.right.left ? this.right.left.height : 0;
       const rightRightHeight = this.right.right ? this.right.right.height : 0;
 
