@@ -1,13 +1,14 @@
 class Node {
-  constructor(value) {
+  constructor(value = null, left = null, right = null) {
     this.value = value;
-    this.left = null;
-    this.right = null;
+    this.left = left;
+    this.right = right;
     this.height = 1;
   }
 
   add(value) {
     const newNode = new Node(value);
+    // Decide to go left or right starting from the root
     if (value < this.value) {
       if (this.left) {
         this.left.add(value);
@@ -15,16 +16,18 @@ class Node {
         this.left = newNode;
       }
 
+      // Update height
       if (!this.right || this.left.height > this.right.height) {
         this.height = this.left.height + 1;
       }
     } else {
       if (this.right) {
-        this.right = this.right.add(value);
+        this.right.add(value);
       } else {
         this.right = newNode;
       }
 
+      // Update height
       if (!this.left || this.right.height > this.left.height) {
         this.height = this.right.height + 1;
       }
@@ -36,28 +39,36 @@ class Node {
     const rightHeight = this.right ? this.right.height : 0;
     const leftHeight = this.left ? this.left.height : 0;
 
-    if (leftHeight > rightHeight) {
+    // Is the node out of balance (left-heavy)?
+    if (Math.abs(leftHeight - rightHeight) >= 2) {
       const leftRightHeight = this.left.right ? this.left.right.height : 0;
       const leftLeftHeight = this.left.left ? this.left.left.height : 0;
 
+      // Do I need to do a double rotation? If so, call rotate on child...
       if (leftRightHeight > leftLeftHeight) {
-        this.left.rotateRR();
+        this.left.rotateLeft();
       }
 
-      this.rotateLL();
-    } else if (rightHeight > leftHeight + 1) {
+      // Then rotate on self
+      this.rotateRight();
+    }
+    // Is the node out of balance (right heavy)?
+    else if (Math.abs(rightHeight - leftHeight) >= 2) {
       const rightLeftHeight = this.right.left ? this.right.left.height : 0;
       const rightRightHeight = this.right.right ? this.right.right.height : 0;
 
+      // Do I need to do a double rotation? If so, rotate on child...
       if (rightLeftHeight > rightRightHeight) {
-        this.right.rotateLL();
+        this.right.rotateRight();
       }
 
-      this.rotateRR();
+      // Then rotate on self
+      this.rotateLeft();
     }
   }
 
-  rotateRR() {
+  // Call if the right child is heavy
+  rotateLeft() {
     const valueBefore = this.value;
     const leftBefore = this.left;
 
@@ -67,11 +78,12 @@ class Node {
     this.left.right = this.left.left;
     this.left.left = leftBefore;
     this.left.value = valueBefore;
-    this.left.updateInNewLocation();
-    this.updateInNewLocation();
+    this.left.calcNewHeight();
+    this.calcNewHeight();
   }
 
-  rotateLL() {
+  // Call if the left child is heavy
+  rotateRight() {
     const valueBefore = this.value;
     const rightBefore = this.right;
 
@@ -81,11 +93,11 @@ class Node {
     this.right.left = this.right.right;
     this.right.right = rightBefore;
     this.right.value = valueBefore;
-    this.right.updateInNewLocation();
-    this.updateInNewLocation();
+    this.right.calcNewHeight();
+    this.calcNewHeight();
   }
 
-  updateInNewLocation() {
+  calcNewHeight() {
     if (!this.right && !this.left) {
       this.height = 1;
     } else if (
@@ -129,3 +141,8 @@ class Tree {
     return this.root;
   }
 }
+
+const nums = [3, 6, 4, 6, 5, 1, 10, 2, 9, 8];
+const tree = new Tree();
+nums.map((num) => tree.add(num));
+const objs = tree.toObject();
