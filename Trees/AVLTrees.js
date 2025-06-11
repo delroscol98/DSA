@@ -106,7 +106,7 @@ class Node {
       this.height = 1;
     } else if (
       !this.right ||
-      (this.left && this.right.height < this.left.height)
+      (this.left && this.left.height > this.right.height)
     ) {
       this.height = this.left.height + 1;
     } else {
@@ -150,3 +150,4 @@ const nums = [3, 6, 4, 6, 5, 1, 10, 2, 9, 8];
 const tree = new Tree();
 nums.map((num) => tree.add(num));
 const objs = tree.toObject();
+console.log(tree);
