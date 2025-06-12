@@ -68,7 +68,39 @@ function createTrie(words) {
   return root;
 }
 
-let root = createTrie(CITY_NAMES.slice(0, 10));
-let completions = root.complete("san");
+var root = createTrie(CITY_NAMES.slice(0, 10));
+var completions = root.complete("san");
 
+var root = createTrie(CITY_NAMES.slice(0, 10));
+var completions = root.complete("philadelph");
+
+var root = createTrie(CITY_NAMES.slice(0, 25));
+var completions = root.complete("d");
+
+var root = createTrie(CITY_NAMES.slice(0, 200));
+var completions = root.complete("new");
+
+var root = createTrie(CITY_NAMES.slice(0, 200));
+var completions = root.complete("bo");
+
+var root = createTrie(CITY_NAMES.slice(0, 500));
+var completions = root.complete("sal");
+
+var root = createTrie(CITY_NAMES);
+var completions = root.complete("san");
+
+// EDGE CASES
+//1. Handle whole words
+var root = createTrie(CITY_NAMES.slice(0, 30));
+var completions = root.complete("seattle");
+
+//2. Handle no match
+var root = createTrie(CITY_NAMES.slice(0, 30));
+var completions = root.complete("no match");
+
+//3. Handle words that are substrings of other words
+var root = createTrie(CITY_NAMES.slice(0, 800));
+var completions = root.complete("salin");
+
+console.log(root);
 console.log(completions);
