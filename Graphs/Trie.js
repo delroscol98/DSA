@@ -39,8 +39,9 @@ class Node {
     }
 
     this.children.forEach((child) =>
-      child._complete(search.substr(1), `${built}${this.value}`)
+      child._complete(search.substr(1), `${built}${this.value}`, suggestions)
     );
+
     return suggestions;
   }
 
