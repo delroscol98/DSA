@@ -146,7 +146,7 @@ class Tree {
   }
 }
 
-const nums = [3, 6, 4, 6, 5, 1, 10, 2, 9, 8];
+const nums = [3, 7, 4, 6, 5, 1, 10, 2, 9, 8];
 const tree = new Tree();
 nums.map((num) => tree.add(num));
 const objs = tree.toObject();
