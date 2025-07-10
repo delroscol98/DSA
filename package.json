@@ -1,0 +1,17 @@
+{
+  "name": "dsa",
+  "version": "1.0.0",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delroscol98/DSA.git"
+  },
+  "author": "Collin Del Rosario",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
+}
