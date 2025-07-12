@@ -1,6 +1,3 @@
-// Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings.
-// Please implement encode and decode
-
 // Input: ["neet", "code", "love", "you"];
 // Output: ["neet", "code", "love", "you"];
 
@@ -8,6 +5,9 @@
 // Output: ["we", "say", ":", "yes"];
 
 /**
+ * Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings.
+ *
+ * Please implement encode and decode
  * @param {string[]} strs
  * @returns {string}
  */
@@ -20,6 +20,9 @@ function encode(strs) {
 }
 
 /**
+ * Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings.
+ *
+ * Please implement encode and decode
  * @param {string} str
  * @returns {string[]}
  */

@@ -1,5 +1,3 @@
-// Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
-
 // Input: nums = [1, 2, 3, 3]
 // Output: true
 
@@ -7,7 +5,8 @@
 // Output: false
 
 /**
- * @param {Array<number>} nums
+ * Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
+ * @param {number[]} nums
  * @returns {boolean}
  */
 function hasDuplicate(nums) {
