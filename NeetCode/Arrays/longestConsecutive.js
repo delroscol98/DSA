@@ -11,6 +11,24 @@
  * @param {number[]} nums
  * @returns {number}
  */
+
+function longestConsecutive(nums) {
+  let res = 0;
+  const set = new Set(nums);
+
+  for (const num of nums) {
+    let streak = 0;
+    let curr = num;
+    while (set.has(curr)) {
+      streak++;
+      curr++;
+    }
+    res = Math.max(res, streak);
+  }
+
+  return res;
+}
+
 function longestConsecutive(nums) {
   let orderedNums = nums.sort((a, b) => a - b);
   orderedNums = orderedNums.filter((num, i, array) => array.indexOf(num) === i);
