@@ -14,6 +14,16 @@
  * @param {number} target
  */
 function twoSum(numbers, target) {
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i + 1; j < numbers.length; j++) {
+      if (numbers[i] + number[j] == target) {
+        return [i + 1, j + 1];
+      }
+    }
+  }
+}
+
+function twoSum(numbers, target) {
   let i = 0;
   let j = numbers.length - 1;
 
