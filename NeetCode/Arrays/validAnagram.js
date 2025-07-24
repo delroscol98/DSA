@@ -53,35 +53,6 @@ function isAnagram(s, t) {
 }
 
 function isAnagram(s, t) {
-  if (s.length != t.length) return false;
-
-  const sMap = new Map();
-  const tMap = new Map();
-
-  for (let i = 0; i < s.length; i++) {
-    if (!sMap.has(s[i])) {
-      sMap.set(s[i], 1);
-    } else {
-      let val = sMap.get(s[i]);
-      sMap.set(s[i], val++);
-    }
-
-    if (!tMap.has(t[i])) {
-      tMap.set(t[i], 1);
-    } else {
-      let val = tMap.get(t[i]);
-      tMap.set(t[i], val++);
-    }
-  }
-
-  for (const [key, val] of sMap) {
-    if (tMap.get(key) != val) return false;
-  }
-
-  return true;
-}
-
-function isAnagram(s, t) {
   const sArr = new Array(26).fill(0);
   const tArr = new Array(26).fill(0);
 
