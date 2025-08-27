@@ -114,7 +114,7 @@ function countingSort(array) {
 
 function pivot(array, pivotIndex = 0, endIndex = array.length - 1) {
   let swapIndex = pivotIndex;
-  for (let i = pivotIndex + 1; i < endIndex; i++) {
+  for (let i = pivotIndex + 1; i <= endIndex; i++) {
     if (array[i] < array[pivotIndex]) {
       swapIndex++;
       swap(array, i, swapIndex);
@@ -126,7 +126,7 @@ function pivot(array, pivotIndex = 0, endIndex = array.length - 1) {
 
 function quickSort(array, left = 0, right = array.length - 1) {
   if (left < right) {
-    const pivotIndex = pivot(array, left, array.length - 1);
+    const pivotIndex = pivot(array, left, right);
     quickSort(array, left, pivotIndex - 1);
     quickSort(array, pivotIndex + 1, right);
   }
